@@ -110,6 +110,7 @@ public class AccountSettings extends K9PreferenceActivity {
     private static final String PREFERENCE_SYNC_REMOTE_DELETIONS = "account_sync_remote_deletetions";
     private static final String PREFERENCE_CRYPTO = "crypto";
     private static final String PREFERENCE_CRYPTO_APP = "crypto_app";
+    private static final String PREFERENCE_CRYPTO_PGP_MIME = "crypto_pgp_mime";
     private static final String PREFERENCE_CLOUD_SEARCH_ENABLED = "remote_search_enabled";
     private static final String PREFERENCE_REMOTE_SEARCH_NUM_RESULTS = "account_remote_search_num_results";
     private static final String PREFERENCE_REMOTE_SEARCH_FULL_TEXT = "account_remote_search_full_text";
@@ -175,6 +176,7 @@ public class AccountSettings extends K9PreferenceActivity {
     private ListPreference mMaxPushFolders;
     private boolean mHasCrypto = false;
     private OpenPgpListPreference mCryptoApp;
+    private CheckBoxPreference mCryptoPGPMime;
 
     private PreferenceScreen mSearchScreen;
     private CheckBoxPreference mCloudSearchEnabled;
@@ -699,6 +701,8 @@ public class AccountSettings extends K9PreferenceActivity {
                     return false;
                 }
             });
+            mCryptoPGPMime = (CheckBoxPreference) findPreference(PREFERENCE_CRYPTO_PGP_MIME);
+            mCryptoPGPMime.setChecked(mAccount.isCryptoPGPMime());
         } else {
             final Preference mCryptoMenu = findPreference(PREFERENCE_CRYPTO);
             mCryptoMenu.setEnabled(false);
@@ -765,6 +769,7 @@ public class AccountSettings extends K9PreferenceActivity {
         mAccount.setLocalStorageProviderId(mLocalStorageProvider.getValue());
         if (mHasCrypto) {
             mAccount.setCryptoApp(mCryptoApp.getValue());
+            mAccount.setCryptoPGPMime(mCryptoPGPMime.isChecked());
         }
 
         // In webdav account we use the exact folder name also for inbox,

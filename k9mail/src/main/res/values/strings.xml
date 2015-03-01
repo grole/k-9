@@ -571,6 +571,8 @@ Please submit bug reports, contribute new features and ask questions at
     <string name="account_settings_crypto">Cryptography</string>
     <string name="account_settings_crypto_app">OpenPGP Provider</string>
     <string name="account_settings_no_openpgp_provider_installed">No OpenPGP Provider installed</string>
+    <string name="account_settings_crypto_pgp_mime">PGP/MIME</string>
+    <string name="account_settings_crypto_pgp_mime_summary">Use PGP/MIME by default. Otherwise PGP/INLINE will be used.</string>
 
     <string name="account_settings_mail_check_frequency_label">Folder poll frequency</string>
 
